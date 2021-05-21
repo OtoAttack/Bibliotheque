@@ -16,5 +16,15 @@ var livre3 = {
     auteur: "Redon"
 }
 var livres = [livre1, livre2, livre3];
+var conteneur = document.getElementById("livre");
 var lenL = livres.length;
-console.log(livres);
+var htmlString = "";
+function mkHtml(titre, auteur) {
+    for(var livre of livres) {
+        htmlString += "<div class=\"liste\">"
+        htmlString += "<li class=\"listeL\">" + livre.titre + " par " + livre.auteur + "</list>";
+        htmlString += "</div>"
+    }
+}
+mkHtml(livres);
+conteneur.innerHTML = htmlString;
