@@ -16,15 +16,36 @@ var livre3 = {
     auteur: "Redon"
 }
 var livres = [livre1, livre2, livre3];
-var conteneur = document.getElementById("livre");
 var lenL = livres.length;
-var htmlString = "";
+var conteneur = document.getElementById("livre");
+
 function mkHtml(titre, auteur) {
+    var htmlString = "";
+    var conteneur = document.getElementById("livre");
     for(var livre of livres) {
         htmlString += "<div class=\"liste\">"
         htmlString += "<li class=\"listeL\">" + livre.titre + " par " + livre.auteur + "</list>";
         htmlString += "</div>"
     }
+    return htmlString;
 }
+conteneur.innerHTML = mkHtml(livres);
 mkHtml(livres);
-conteneur.innerHTML = htmlString;
+
+
+var formulaire = document.getElementById("formulaire");
+formulaire.addEventListener("submit", (e) => {
+    e.preventDefault();
+    var titre = document.getElementById("titre").value;
+    var auteur = document.getElementById("auteur").value;
+    var livreN = {
+        référence: "",
+        titre: "",
+        auteur: ""
+    }
+    livreN.référence = lenL + 1;
+    livreN.titre = titre;
+    livreN.auteur = auteur;
+    livres.push(livreN);
+    conteneur.innerHTML = mkHtml(livres);
+});
